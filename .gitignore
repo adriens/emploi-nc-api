@@ -6,3 +6,13 @@
 .settings/
 /target/
 target/
+/src/test/
+src/test/
+/src/test/*
+/.idea
+/emploi-nc-api.iml
+emploi-nc-api.iml
+HELP.md
+mvnw
+mvnw.cmd
+/.mvn
