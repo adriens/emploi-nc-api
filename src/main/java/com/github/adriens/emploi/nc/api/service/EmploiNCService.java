@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
-public class EmploiNcService {
+public class EmploiNCService {
 
-    private final Logger log = LoggerFactory.getLogger(EmploiNcService.class);
+    private final Logger log = LoggerFactory.getLogger(EmploiNCService.class);
     public static final int DEFAULT_LATEST = 10;
 
     public ArrayList<Emploi> getLatestEmploi(int numberLatest) throws IOException {
