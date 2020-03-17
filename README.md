@@ -34,4 +34,4 @@ et les partenaires pédagogiques.
 
 ### Exemples de réalisations
  
-- [ ] Application mobile Flutter : en cours de réalisation cf [#5](https://github.com/adriens/emploi-nc-api/issues/5)
+- [ ] Application mobile Flutter : en cours de réalisation cf [#5](https://github.com/adriens/emploi-nc-api/issues/5) cf le [projet dédié](https://github.com/adriens/emploi-nc-app)
