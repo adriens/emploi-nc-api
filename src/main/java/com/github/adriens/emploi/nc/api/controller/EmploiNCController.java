@@ -34,5 +34,15 @@ public class EmploiNcController {
         }
     }
 
-
+    @GetMapping("/emploi/latest")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ArrayList<Emploi> getLatestEmploi() throws Exception {
+        try{
+            return emploiNCService.getLatestEmploi(EmploiNcService.DEFAULT_LATEST);
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer les derniers emplois.");
+            throw ex;
+        }
+    }
 }
