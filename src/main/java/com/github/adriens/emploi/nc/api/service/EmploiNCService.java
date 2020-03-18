@@ -14,6 +14,7 @@ public class EmploiNCService {
 
     private final Logger log = LoggerFactory.getLogger(EmploiNCService.class);
     public static final int DEFAULT_LATEST = 10;
+    public static final int MAX_LATEST = 100;
 
     public ArrayList<Emploi> getLatestEmploi(int numberLatest) throws IOException {
         return Emplois.getLatestEmploi(numberLatest);

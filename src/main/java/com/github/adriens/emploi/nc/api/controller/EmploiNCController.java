@@ -5,10 +5,12 @@ import com.github.adriens.emploi.nc.sdk.Emploi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.io.IOException;
@@ -25,10 +27,14 @@ public class EmploiNCController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ArrayList<Emploi> getLatestEmploi(@PathVariable Integer number) throws Exception {
         try{
-            return emploiNCService.getLatestEmploi(number);
+            if ( number < EmploiNCService.MAX_LATEST ) {
+                return emploiNCService.getLatestEmploi(number);
+            }else {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
         }
         catch(IOException ex){
-            log.error("Impossible de récupérer les derniers emplois.");
+            log.error("Impossible de récupérer les derniers emplois."+ex);
             throw ex;
         }
     }
@@ -40,9 +46,8 @@ public class EmploiNCController {
             return emploiNCService.getLatestEmploi(EmploiNCService.DEFAULT_LATEST);
         }
         catch(IOException ex){
-            log.error("Impossible de récupérer les derniers emplois.");
+            log.error("Impossible de récupérer les derniers emplois."+ex);
             throw ex;
         }
     }
-    /* TOdo : code 400*/
 }
