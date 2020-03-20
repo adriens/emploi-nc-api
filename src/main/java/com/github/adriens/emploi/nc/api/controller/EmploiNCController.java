@@ -1,7 +1,9 @@
 package com.github.adriens.emploi.nc.api.controller;
 
 import com.github.adriens.emploi.nc.api.service.EmploiNCService;
+import com.github.adriens.emploi.nc.api.service.StatService;
 import com.github.adriens.emploi.nc.sdk.Emploi;
+import com.github.adriens.emploi.nc.sdk.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,18 @@ public class EmploiNCController {
         }
         catch(IOException ex){
             log.error("Impossible de récupérer les derniers emplois."+ex);
+            throw ex;
+        }
+    }
+
+    @GetMapping("/stats")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public Stat getStats() throws Exception {
+        try{
+            return StatService.getStats();
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer les stats."+ex);
             throw ex;
         }
     }
