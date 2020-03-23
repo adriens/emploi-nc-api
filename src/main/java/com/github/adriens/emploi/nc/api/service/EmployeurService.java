@@ -16,7 +16,7 @@ public class EmployeurService {
     private final Logger log = LoggerFactory.getLogger(EmploiService.class);
     public static final int MAX_EMPLOYEUR = 200;
 
-    public static Employeur getInfoEmployeurByNumEmploi(Integer numero) throws IOException {
+    public Employeur getInfoEmployeurByNumEmploi(Integer numero) throws IOException {
         return Emplois.getInfoEmployeurByNumEmploi(numero);
     }
 }

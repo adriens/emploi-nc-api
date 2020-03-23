@@ -24,6 +24,8 @@ import java.util.ArrayList;
 public class EmploiNCController {
     @Autowired
     private EmploiService emploiNCService;
+    @Autowired
+    private EmployeurService employeurService;
 
     private final Logger log = LoggerFactory.getLogger(EmploiNCController.class);
 
@@ -39,11 +41,23 @@ public class EmploiNCController {
         }
     }
 
+    @GetMapping("/emploi/{numero}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public Emploi getInfoEmploiByNumero(@PathVariable Integer numero) throws Exception {
+        try{
+            return emploiNCService.getInfoEmploiByNumero(numero);
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer l'offre <"+numero+">."+ex);
+            throw ex;
+        }
+    }
+
     @GetMapping("/emploi/{numero}/employeur")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Employeur getInfoEmployeurByNumEmploi(@PathVariable Integer numero) throws Exception {
         try{
-            return EmployeurService.getInfoEmployeurByNumEmploi(numero);
+            return employeurService.getInfoEmployeurByNumEmploi(numero);
         }
         catch(IOException ex){
             log.error("Impossible de récupérer l'employeur de cette l'offre <"+numero+">."+ex);

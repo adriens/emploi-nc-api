@@ -19,4 +19,8 @@ public class EmploiService {
     public ArrayList<Emploi> getLatestEmploi(int numberLatest) throws IOException {
         return Emplois.getLatestEmploi(numberLatest);
     }
+
+    public Emploi getInfoEmploiByNumero(int numero) throws IOException {
+        return Emplois.getInfoEmploiByNumero(numero);
+    }
 }

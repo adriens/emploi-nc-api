@@ -11,8 +11,10 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 
 ```
 /stats
+
 /emploi/latest/
 /emploi/latest/{quantity}
+/emploi/{numero}
 /emploi/{numero}/employeur
 ```
 
@@ -22,6 +24,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 /stats
 /emploi/latest
 /emploi/latest/5
+/emploi/4480
 /emploi/4480/employeur
 ```
 
