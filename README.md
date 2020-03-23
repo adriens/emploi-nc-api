@@ -13,6 +13,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 /stats
 /emploi/latest/
 /emploi/latest/{quantity}
+/emploi/{numero}/employeur
 ```
 
 ## Exemples d'appels
@@ -21,6 +22,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 /stats
 /emploi/latest
 /emploi/latest/5
+/emploi/4480/employeur
 ```
 
 ## Marketplace et documentation
