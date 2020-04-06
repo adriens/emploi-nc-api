@@ -5,7 +5,6 @@ import com.github.adriens.emploi.nc.api.service.EmployeurService;
 import com.github.adriens.emploi.nc.api.service.StatService;
 import com.github.adriens.emploi.nc.sdk.Emploi;
 import com.github.adriens.emploi.nc.sdk.Employeur;
-import com.github.adriens.emploi.nc.sdk.Employeurs;
 import com.github.adriens.emploi.nc.sdk.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,15 +41,27 @@ public class EmploiNCController {
         }
     }
 
-    @GetMapping("/employeurs/{id}")
+    @GetMapping("/employeurs")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public Employeur getStats(@PathVariable String id) throws Exception {
+    public ArrayList<Employeur> getInfoALLEmployeur() throws Exception {
         try{
-            return employeurService.getInfoEmployeurById(id);
+            return employeurService.getAllEmployeurs();
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer les employeurs."+ex);
+            throw ex;
+        }
+    }
+
+    @GetMapping("/employeurs/{name}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public Employeur getInfoEmployeurByName(@PathVariable String name) throws Exception {
+        try{
+            return employeurService.getInfoEmployeurByName(name);
         }
         catch(IOException ex){
             log.error("Impossible de récupérer les stats."+ex);
-            throw ex;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }
 

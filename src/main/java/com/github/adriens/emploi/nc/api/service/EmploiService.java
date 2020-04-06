@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class EmploiService {
 
     private final Logger log = LoggerFactory.getLogger(EmploiService.class);
-    public static final int DEFAULT_LATEST = 10;
+    public static final int DEFAULT_LATEST = 25;
     public static final int MAX_LATEST = 100;
 
     public ArrayList<Emploi> getLatestEmploi(int numberLatest) throws IOException {

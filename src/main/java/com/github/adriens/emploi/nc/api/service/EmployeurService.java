@@ -21,7 +21,11 @@ public class EmployeurService {
         return Emplois.getInfoEmployeurByNumEmploi(numero);
     }
 
-    public Employeur getInfoEmployeurById(String id) throws IOException {
-        return Employeurs.getInfoEmployeurById(id);
+    public ArrayList<Employeur> getAllEmployeurs() throws IOException {
+        return Employeurs.getAllEmployeurs();
+    }
+
+    public Employeur getInfoEmployeurByName(String id) throws IOException {
+        return Employeurs.getInfoEmployeurByName(id);
     }
 }
