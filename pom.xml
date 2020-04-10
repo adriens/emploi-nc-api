@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <emploi-nc-sdk.version>0.1.40</emploi-nc-sdk.version>
+        <emploi-nc-sdk.version>0.1.41</emploi-nc-sdk.version>
     </properties>
 
     <repositories>
