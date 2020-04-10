@@ -10,13 +10,13 @@
     </parent>
     <groupId>com.github.adriens</groupId>
     <artifactId>emploi-nc-api</artifactId>
-    <version>0.1.13</version>
+    <version>0.1.14</version>
     <name>emploi-nc-api</name>
     <description>API des emploi disponible sur gouv.nc</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <emploi-nc-sdk.version>0.1.41</emploi-nc-sdk.version>
+        <emploi-nc-sdk.version>0.1.40</emploi-nc-sdk.version>
     </properties>
 
     <repositories>
