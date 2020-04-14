@@ -23,8 +23,20 @@ public class EmploiService {
         if ( MotsClès.equals("none") ) MotsClès = "";
         if ( commune.equals("none") ) commune = "";
         if ( contrat.equals("none") ) contrat = "";
-        if ( dateDebut.equals("none")) dateDebut = "";
-        if ( dateFin.equals("none") ) dateFin = "";
+        if ( dateDebut.equals("none") ) {
+            dateDebut = "";
+        }else{
+            dateDebut = new StringBuilder(dateDebut).insert(2, "/").toString();
+            dateDebut = new StringBuilder(dateDebut).insert(dateDebut.length()-4, "/").toString();
+        }
+        if ( dateFin.equals("none") ) {
+            dateFin = "";
+        }else{
+            dateFin = new StringBuilder(dateFin).insert(2, "/").toString();
+            dateFin = new StringBuilder(dateFin).insert(dateFin.length()-4, "/").toString();
+        }
+
+
         return Emplois.getSearchInfoEmploi(nombreMaxOffres,MotsClès,commune,contrat,dateDebut,dateFin);
     }
 

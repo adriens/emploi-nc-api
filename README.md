@@ -37,6 +37,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 /emploi/4480/employeur
 
 /search/30/none/Nouméa/CDI/none/none
+/search/30/none/Nouméa/CDI/01042020/10042020
 ```
 
 ## Marketplace et documentation
