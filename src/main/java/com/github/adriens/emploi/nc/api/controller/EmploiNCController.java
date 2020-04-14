@@ -77,6 +77,21 @@ public class EmploiNCController {
         }
     }
 
+    @GetMapping("/search/{nombreMaxOffres}/{MotsClès}/{commune}/{contrat}/{dateDebut}/{dateFin}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ArrayList<Emploi> getsearchs(@PathVariable String nombreMaxOffres,@PathVariable String MotsClès,
+                             @PathVariable String commune,@PathVariable String contrat,
+                             @PathVariable String dateDebut,@PathVariable String dateFin) throws Exception {
+        try{
+            return emploiNCService.getSearchInfoEmploi(nombreMaxOffres,MotsClès,commune,contrat,dateDebut,dateFin);
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer la Recherche avec comme paramètre : nombreMaxOffres<"+nombreMaxOffres+">."+"MotsClès<"+MotsClès+">"+"commune<"+commune+">"+"contrat<"+contrat+">"
+                    +"dateDebut<"+dateDebut+">"+"dateFin<"+dateFin+">"+ex);
+            throw ex;
+        }
+    }
+
     @GetMapping("/emploi/{numero}/employeur")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Employeur getInfoEmployeurByNumEmploi(@PathVariable Integer numero) throws Exception {
