@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 import java.io.IOException;
@@ -28,6 +29,14 @@ public class EmploiNCController {
     private EmployeurService employeurService;
 
     private final Logger log = LoggerFactory.getLogger(EmploiNCController.class);
+
+    @GetMapping("/")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public RedirectView getDefault() throws Exception {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("https://spring.io/projects/spring-restdocs");
+        return redirectView;
+    }
 
     @GetMapping("/stats")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
