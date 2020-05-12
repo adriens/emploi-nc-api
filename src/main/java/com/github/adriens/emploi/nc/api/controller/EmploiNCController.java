@@ -62,6 +62,7 @@ public class EmploiNCController {
         }
     }
 
+
     @GetMapping("/employeurs/{name}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Employeur getInfoEmployeurByName(@PathVariable String name) throws Exception {
@@ -86,6 +87,29 @@ public class EmploiNCController {
         }
     }
 
+    @GetMapping("/emploi/previous/{nb}/{numeroOffre}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ArrayList<Emploi> getPreviousXOffers(@PathVariable Integer nb,@PathVariable Integer numeroOffre) throws Exception {
+        try{
+            return emploiNCService.getPreviousXOffers(numeroOffre,nb);
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer les offres précédentes."+ex);
+            throw ex;
+        }
+    }
+
+    @GetMapping("/emploi/next/{nb}/{numeroOffre}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ArrayList<Emploi> getNextXOffers(@PathVariable Integer nb,@PathVariable Integer numeroOffre) throws Exception {
+        try{
+            return emploiNCService.getNextXOffers(numeroOffre,nb);
+        }
+        catch(IOException ex){
+            log.error("Impossible de récupérer les offres suivantes."+ex);
+            throw ex;
+        }
+    }
     @GetMapping("/search/{nombreMaxOffres}/{MotsClès}/{commune}/{contrat}/{dateDebut}/{dateFin}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ArrayList<Emploi> getsearchs(@PathVariable String nombreMaxOffres,@PathVariable String MotsClès,
