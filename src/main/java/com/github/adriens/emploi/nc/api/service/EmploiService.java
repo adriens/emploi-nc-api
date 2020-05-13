@@ -19,6 +19,12 @@ public class EmploiService {
     public ArrayList<Emploi> getLatestEmploi(int numberLatest) throws IOException {
         return Emplois.getLatestEmploi(numberLatest);
     }
+    public ArrayList<Emploi> getNextXOffers(int numeroOffre,int XLast) throws IOException {
+        return Emplois.getNextXOfferNumEmploi(numeroOffre,XLast);
+    }
+    public ArrayList<Emploi> getPreviousXOffers(int numeroOffre,int XLast) throws IOException {
+        return Emplois.getPreviousXOfferNumEmploi(numeroOffre,XLast);
+    }
     public ArrayList<Emploi> getSearchInfoEmploi(String nombreMaxOffres,String MotsClès,String commune,String contrat,String dateDebut,String dateFin) throws IOException {
         if ( MotsClès.equals("none") ) MotsClès = "";
         if ( commune.equals("none") ) commune = "";
