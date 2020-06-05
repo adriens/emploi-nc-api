@@ -10,13 +10,13 @@
     </parent>
     <groupId>com.github.adriens</groupId>
     <artifactId>emploi-nc-api</artifactId>
-    <version>0.1.21</version>
+    <version>0.1.22</version>
     <name>emploi-nc-api</name>
     <description>API des emploi disponible sur gouv.nc</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <emploi-nc-sdk.version>0.1.56</emploi-nc-sdk.version>
+        <emploi-nc-sdk.version>0.1.60</emploi-nc-sdk.version>
     </properties>
 
     <repositories>
@@ -30,6 +30,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>net.sf.supercsv</groupId>
+            <artifactId>super-csv</artifactId>
+            <version>2.4.0</version>
         </dependency>
 
         <dependency>
