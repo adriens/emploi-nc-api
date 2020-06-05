@@ -2,7 +2,9 @@ package com.github.adriens.emploi.nc.api.controller;
 
 import com.github.adriens.emploi.nc.api.service.EmploiService;
 import com.github.adriens.emploi.nc.api.service.EmployeurService;
+import com.github.adriens.emploi.nc.api.service.ReportService;
 import com.github.adriens.emploi.nc.api.service.StatService;
+import com.github.adriens.emploi.nc.sdk.CSVLine;
 import com.github.adriens.emploi.nc.sdk.Emploi;
 import com.github.adriens.emploi.nc.sdk.Employeur;
 import com.github.adriens.emploi.nc.sdk.Stat;
@@ -10,14 +12,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.view.RedirectView;
 
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -165,5 +170,32 @@ public class EmploiNCController {
         }
     }
 
+    @GetMapping(value = "/csv")
+    public void  downloadCSV(HttpServletResponse response) throws IOException {
+        String csvFileName = "stats.csv";
+        response.setContentType("text/csv");
+        ArrayList<CSVLine> lines = new ArrayList();
+        lines = ReportService.getReportCSV(200);
 
+        // creates mock data
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"",
+                csvFileName);
+        response.setHeader(headerKey, headerValue);
+
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+                CsvPreference.STANDARD_PREFERENCE);
+
+        final String[] header = { "numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
+                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication" };
+
+        csvWriter.writeHeader(header);
+
+
+        for (CSVLine line :  lines) {
+            csvWriter.write(line, header);
+        }
+
+        csvWriter.close();
+    }
 }
