@@ -186,7 +186,7 @@ public class EmploiNCController {
         ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
                 CsvPreference.STANDARD_PREFERENCE);
 
-        final String[] header = { "numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
+        final String[] header = { "url","numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
                 "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication" };
 
         csvWriter.writeHeader(header);
