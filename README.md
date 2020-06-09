@@ -12,6 +12,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 ```
 /stats
 /csv
+/excel
 
 /employeurs
 /employeurs/{name}
@@ -31,6 +32,7 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 ```
 /stats
 /csv
+/excel
 
 /employeurs
 /employeurs/MRT

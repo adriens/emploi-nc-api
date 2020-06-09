@@ -173,7 +173,7 @@ public class EmploiNCController {
     @GetMapping(value = "/csv")
     public void  downloadCSV(HttpServletResponse response) throws IOException {
         String csvFileName = "stats.csv";
-        response.setContentType("text/csv");
+        response.setContentType("text/csv;charset=UTF-8");
         ArrayList<CSVLine> lines = new ArrayList();
         lines = ReportService.getReportCSV(200);
 
@@ -187,7 +187,36 @@ public class EmploiNCController {
                 CsvPreference.STANDARD_PREFERENCE);
 
         final String[] header = { "url","numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
-                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication" };
+                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat" };
+
+        csvWriter.writeHeader(header);
+
+
+        for (CSVLine line :  lines) {
+            csvWriter.write(line, header);
+        }
+
+        csvWriter.close();
+    }
+
+    @GetMapping(value = "/excel")
+    public void downloadxlsx(HttpServletResponse response) throws IOException {
+        String csvFileName = "statsEXCEL.csv";
+        response.setContentType("text/csv;charset=Windows-1252");
+        ArrayList<CSVLine> lines = new ArrayList();
+        lines = ReportService.getReportCSV(200);
+
+        // creates mock data
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"",
+                csvFileName);
+        response.setHeader(headerKey, headerValue);
+
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(),
+                CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
+
+        final String[] header = { "url","numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
+                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat" };
 
         csvWriter.writeHeader(header);
 
