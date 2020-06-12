@@ -187,7 +187,7 @@ public class EmploiNCController {
                 CsvPreference.STANDARD_PREFERENCE);
 
         final String[] header = { "url","numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
-                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat" };
+                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat","province" , "latitude", "longitude", "urlgooglemap" };
 
         csvWriter.writeHeader(header);
 
@@ -216,7 +216,7 @@ public class EmploiNCController {
                 CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
 
         final String[] header = { "url","numeroOffre", "titreOffre", "nomEntreprise", "aPourvoirLe",
-                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat" };
+                "communeEmploi", "experience", "niveauFormation" , "diplome" , "nbPostes", "datePublication", "typecontrat","province" , "latitude", "longitude", "urlgooglemap" };
 
         csvWriter.writeHeader(header);
 
