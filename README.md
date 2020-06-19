@@ -9,6 +9,8 @@ API Offres d'emploi de Nouvelle-Calédonie, cf sîte officiel : https://emploi.g
 
 ## Endpoints
 
+Le endpoint racine vous renvoie vers une documentation généré par open api.
+
 ```
 /stats
 /csv
