@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 @RestController
 public class EmploiNCController {
+
     @Autowired
     private EmploiService emploiNCService;
     @Autowired
@@ -39,7 +40,7 @@ public class EmploiNCController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public RedirectView getDefault() throws Exception {
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("https://spring.io/projects/spring-restdocs");
+        redirectView.setUrl("/doc.html");
         return redirectView;
     }
 
@@ -66,7 +67,6 @@ public class EmploiNCController {
             throw ex;
         }
     }
-
 
     @GetMapping("/employeurs/{name}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -115,11 +115,10 @@ public class EmploiNCController {
             throw ex;
         }
     }
+
     @GetMapping("/search/{nombreMaxOffres}/{MotsClès}/{commune}/{contrat}/{dateDebut}/{dateFin}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public ArrayList<Emploi> getsearchs(@PathVariable String nombreMaxOffres,@PathVariable String MotsClès,
-                             @PathVariable String commune,@PathVariable String contrat,
-                             @PathVariable String dateDebut,@PathVariable String dateFin) throws Exception {
+    public ArrayList<Emploi> getsearchs(@PathVariable String nombreMaxOffres,@PathVariable String MotsClès,@PathVariable String commune,@PathVariable String contrat,@PathVariable String dateDebut,@PathVariable String dateFin) throws Exception {
         try{
             return emploiNCService.getSearchInfoEmploi(nombreMaxOffres,MotsClès,commune,contrat,dateDebut,dateFin);
         }
