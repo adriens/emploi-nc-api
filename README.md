@@ -69,7 +69,7 @@ et les partenaires pédagogiques.
 
 # Intégration des données dans ELK
 
-## Configurer Logstash
+## Configuration Logstash
 
 #### Exemple de configuration
 
